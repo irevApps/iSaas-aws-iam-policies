@@ -1,0 +1,84 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "VisualEditor0",
+			"Effect": "Allow",
+			"Action": "cloudwatch:*",
+			"Resource": "*",
+			"Condition": {
+				"StringEquals": {
+					"aws:RequestedRegion": "eu-west-2"
+				}
+			}
+		},
+		{
+			"Sid": "VisualEditor1",
+			"Effect": "Allow",
+			"Action": "ec2:*",
+			"Resource": "*",
+			"Condition": {
+				"StringEquals": {
+					"aws:RequestedRegion": "eu-west-2"
+				}
+			}
+		},
+		{
+			"Sid": "VisualEditor2",
+			"Effect": "Allow",
+			"Action": [
+				"elasticloadbalancing:*"
+			],
+			"Resource": "*",
+			"Condition": {
+				"StringEquals": {
+					"aws:RequestedRegion": "eu-west-2"
+				}
+			}
+		},
+        {
+			"Sid": "AllowCreateBucket",
+            "Effect": "Allow",
+            "Action": "s3:CreateBucket",
+			"Resource": "*"
+        },
+        {
+			"Sid": "AllowFullActionsOniSaasBuckets",
+            "Effect": "Allow",
+            "Action": "s3:*",
+			"Resource": [
+				"arn:aws:s3:::is-rs-*",
+				"arn:aws:s3:::is-sg-*"
+			]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "acm:RequestCertificate",
+                "acm:DescribeCertificate",
+                "acm:ListCertificates",
+                "acm:GetCertificate",
+                "acm:ListTagsForCertificate",
+                "acm:GetAccountConfiguration",
+                "acm:AddTagsToCertificate"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "acm:UpdateCertificateOptions",
+                "acm:DeleteCertificate"
+            ],
+            "Resource": "*",
+			"Condition": {
+				"StringEquals": {
+					"aws:ResourceTag/system_instance_name": [
+						"iSaas-control"
+					]
+				}
+			}
+        }
+        
+	]
+}
