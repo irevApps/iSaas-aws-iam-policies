@@ -1,5 +1,35 @@
 
-# Usage : 
+# iSaas AWS IAM Management Tool : 
+
+
+## Context : 
+
+This Python script is designed to assist with deploying required policies and IAM users to simplify connecting your AWS account as a provider on iSaas : the Infrastructure as a Service Management platform.
+
+When integrating AWS services with third-party platforms, it's often necessary to manage IAM users and their access policies to ensure secure and controlled access to your AWS resources. This tool streamlines the process by allowing you to easily manage IAM users, access keys, and attached policies, ultimately facilitating the integration of your AWS account with iSaas.
+
+# Terminology : 
+iSaas will help you Manage you cloud capacity to manage :
+- **Resources** : Cloud Resources , like ec2 instances , S3 buckets , ALBs ...
+- **Infrasctures** : Composed Set of Resources as single system to Serve and deploy Apps and instances
+- **Sub Resources** : Sub Elements or Sub spaces for a Cloud Resource : like S3 sub folder that been associated with a deployed app instance or dedicated folder to store backups of an infra ...
+
+
+# Security and Scopes Limitation : 
+iSaas is built to facilitate the managment of your aws Accounts and also to deploy Resources and infrastructures in a solide and secure way.
+
+For that, each Resource or sub Resource Created by iSaas will be associated a new iam user to manage it if needed , specialy if those users credentials are shared with new apps instances or external agents.
+
+A clair case will be the backups managment by iSaas , each managed infra will be associated with a sub folder of a shared S3 bucket dedécated for backups , each infra send and load its backups using isolated iam user that have only access to that bucket folder.
+
+To make iSaas able to control you aws account with minimal permissions scopes , and make previous scenarios possible , we will need only to deploy the needed policies to your aws accout and give to iSaas a user that have only permission to create new iam users but limited by those policies.
+
+You can see full list on data/polices.
+
+
+
+
+## Usage : 
 
 
 Init the aws account with required policies that iSaas needs to assign to sub users that will manage sub resources ( instances users for s3 , Resources Spaces users : S3 iam users ...)
