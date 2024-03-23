@@ -4,10 +4,6 @@ from lib.env_loader import load_env
 from lib.policy_manager import PolicyManager
 
 
-# Load environment variables from .env file if it exists
-load_env()
-
-
 # Define paths to IAM policies
 policy_paths = [
     # Resources Managers policies :
