@@ -12,7 +12,7 @@ policy_paths = [
     "data/policies/managers/iSaas-s3-manager-user-policy.json",
     # Sub Resources Agents policies :
     "data/policies/agents/iSaas-s3-unit-user-policy.json",
-    "data/policies/agents/isaas-s3-space-user-policy.json",
+    "data/policies/agents/iSaas-s3-space-user-policy.json",
 ]
 
 iam_manager = PolicyManager()
