@@ -11,7 +11,7 @@ When integrating AWS services with third-party platforms, it's often necessary t
 # Terminology : 
 iSaas will help Manage :
 - **Resources** : Cloud Resources , like ec2 instances , S3 buckets , ALBs ...
-- **Infrasctures** : Composed Set of Resources as single system to Serve and deploy Apps and instances
+- **Infrastructures** : Composed Set of Resources as single system to Serve and deploy Apps and instances
 - **Sub Resources** : Sub Elements or Sub spaces for a Cloud Resource : like S3 sub folder that been associated with a deployed app instance or dedicated folder to store backups of an infra ...
 
 

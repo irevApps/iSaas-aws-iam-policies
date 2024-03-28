@@ -10,21 +10,44 @@
             "Resource": "arn:aws:iam::*:user/*"
         },
         {
-            "Sid": "TagUser",
+            "Sid": "PostUserCreation",
             "Effect": "Allow",
             "Action": [
                 "iam:TagUser",
                 "iam:CreateLoginProfile",
                 "iam:CreateAccessKey",
-                "iam:GetUser",
-                "iam:ListAttachedUserPolicies",
-                "iam:ListAccessKeys",
-                "iam:UpdateLoginProfile",
-                "iam:ListGroupsForUser"
+                "iam:UpdateLoginProfile"
             ],
             "Resource": [
                 "arn:aws:iam::*:user/isaas-*"
             ]
+        },
+        {
+            "Sid": "RequiredReads",
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetUser",
+                "iam:GetLoginProfile",
+                "iam:ListUserPolicies",
+                "iam:ListAttachedUserPolicies",
+                "iam:ListAccessKeys",
+                "iam:ListGroupsForUser",
+                "iam:ListSSHPublicKeys",
+                "iam:ListServiceSpecificCredentials",
+                "iam:ListSigningCertificates",
+                "iam:ListMFADevices"
+            ],
+            "Resource": [
+                "arn:aws:iam::*:user/isaas-*"
+            ]
+        },
+        {
+            "Effect": "AllowReadOwnPolicies",
+            "Action": [
+                "iam:ListAttachedUserPolicies",
+                "iam:ListUserPolicies"
+            ],
+            "Resource": "arn:aws:iam::*:user/${aws:username}"
         },
         {
             "Sid": "DeleteUser",
@@ -32,13 +55,7 @@
             "Action": [
                 "iam:DeleteUser",
                 "iam:DeleteLoginProfile",
-                "iam:DeleteAccessKey",
-                "iam:GetLoginProfile",
-                "iam:ListSSHPublicKeys",
-                "iam:ListServiceSpecificCredentials",
-                "iam:ListSigningCertificates",
-                "iam:ListMFADevices",
-                "iam:ListUserPolicies"
+                "iam:DeleteAccessKey"
             ],
             "Resource": "arn:aws:iam::*:user/*",
             "Condition": {
