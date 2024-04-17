@@ -4,12 +4,12 @@ import boto3
 
 policies_names = [
     # Resources Managers policies :
-    "iSaas-s3-units-iam-manager-policy.json",
-    "iSaas-s3-spaces-iam-manager-policy.json",
-    "iSaas-s3-manager-user-policy.json",
+    # "iSaas-s3-units-iam-manager-policy",
+    "iSaas-s3-spaces-iam-manager-policy",
+    # "iSaas-s3-manager-user-policy",
     # Sub Resources Agents policies :
-    "iSaas-s3-unit-user-policy.json",
-    "iSaas-s3-space-user-policy.json",
+    # "iSaas-s3-unit-user-policy",
+    # "iSaas-s3-space-user-policy",
 ]
 
 def get_aws_account_id():
@@ -33,8 +33,8 @@ def delete_iam_policy(policy_name):
         iam = boto3.client('iam')
         policy_arn = generate_policy_arn(policy_name)
         if policy_arn:
-            #iam.delete_policy(PolicyArn=policy_arn)
-            print(f"Deleted policy '{policy_name}'")
+            iam.delete_policy(PolicyArn=policy_arn)
+            print(f"Deleted policy '{policy_arn}'")
         else:
             print(f"Failed to generate policy ARN for '{policy_name}'")
     except iam.exceptions.NoSuchEntityException:
