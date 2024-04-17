@@ -8,7 +8,7 @@ from lib.policy_manager import PolicyManager
 policy_paths = [
     # Resources Managers policies :
     "data/policies/provider/iSaas-s3-units-iam-manager-policy.json",
-    "data/policies/provider/iSaas-s3-spaces-iam-manager-policy.json",
+    "data/policies/provider/isaas-s3-spaces-iam-manager-policy.json",
     "data/policies/managers/iSaas-s3-manager-user-policy.json",
     # Sub Resources Agents policies :
     "data/policies/agents/iSaas-s3-unit-user-policy.json",
