@@ -1,0 +1,75 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "CreateUser",
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateUser"
+            ],
+            "Resource": "arn:aws:iam::*:user/*"
+        },
+        {
+            "Sid": "TagUser",
+            "Effect": "Allow",
+            "Action": [
+                "iam:TagUser",
+                "iam:CreateLoginProfile",
+                "iam:CreateAccessKey",
+                "iam:GetUser",
+                "iam:ListAttachedUserPolicies",
+                "iam:ListAccessKeys",
+                "iam:UpdateLoginProfile",
+                "iam:ListGroupsForUser"
+            ],
+            "Resource": [
+                "arn:aws:iam::*:user/isaas-s3-space-*-user*"
+            ]
+        },
+        {
+            "Sid": "DeleteUser",
+            "Effect": "Allow",
+            "Action": [
+                "iam:DeleteUser",
+                "iam:DeleteLoginProfile",
+                "iam:DeleteAccessKey",
+                "iam:GetLoginProfile",
+                "iam:ListSSHPublicKeys",
+                "iam:ListServiceSpecificCredentials",
+                "iam:ListSigningCertificates",
+                "iam:ListMFADevices",
+                "iam:ListUserPolicies"
+            ],
+            "Resource": "arn:aws:iam::*:user/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceTag/Role": [
+                        "isaas-s3-space-user"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "LimitUserPolicyAttachment",
+            "Effect": "Allow",
+            "Action": [
+                "iam:AttachUserPolicy",
+                "iam:DetachUserPolicy",
+                "iam:DeleteAccessKey"
+            ],
+            "Resource": "arn:aws:iam::*:user/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceTag/Role": [
+                        "isaas-s3-space-user"
+                    ]
+                },
+                "StringLike": {
+                    "iam:PolicyARN": [
+                        "arn:aws:iam::*:policy/isaas-s3-space-user-policy"
+                    ]
+                }
+            }
+        }
+    ]
+}
