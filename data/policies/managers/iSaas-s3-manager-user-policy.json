@@ -10,7 +10,9 @@
             ],
             "Resource": [
                 "arn:aws:s3:::is-sg-${aws:PrincipalTag/sg}",
-                "arn:aws:s3:::is-sg-${aws:PrincipalTag/sg}/*"
+                "arn:aws:s3:::is-sg-${aws:PrincipalTag/sg}/*",
+                "arn:aws:s3:::${aws:PrincipalTag/group}",
+                "arn:aws:s3:::${aws:PrincipalTag/group}/"
             ]
         },
         {
@@ -22,7 +24,9 @@
             ],
             "Resource": [
                 "arn:aws:s3:::is-sg-${aws:PrincipalTag/sg}",
-                "arn:aws:s3:::is-sg-${aws:PrincipalTag/sg}/*"
+                "arn:aws:s3:::is-sg-${aws:PrincipalTag/sg}/*",
+                "arn:aws:s3:::${aws:PrincipalTag/group}",
+                "arn:aws:s3:::${aws:PrincipalTag/group}/"
             ]
         }
     ]
